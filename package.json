@@ -1,0 +1,19 @@
+{
+  "name": "svg-to-3mf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "earcut": "^3.2.4",
+    "polygon-clipping": "^0.15.7",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.2"
+  }
+}

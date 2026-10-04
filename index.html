@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SVG → 3MF</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236d5efc'/%3E%3Cpath d='M9 19l7-4 7 4-7 4z' fill='%23fff'/%3E%3Cpath d='M9 14l7-4 7 4-7 4z' fill='%23fff' opacity='.6'/%3E%3C/svg%3E">
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="logo"></span><b>SVG → 3MF</b></div>
+    <span class="tag">Multicolor 3D print files, made in your browser. Nothing is uploaded.</span>
+  </header>
+
+  <main>
+    <section class="stage" id="stage">
+      <div class="drop" id="drop">
+        <div class="drop-inner">
+          <div class="drop-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg>
+          </div>
+          <h1>Drop an SVG here</h1>
+          <p>or <label class="link">browse<input type="file" id="file" accept=".svg,image/svg+xml" hidden></label> · colors are preserved as separate filaments</p>
+          <button class="ghost" id="sample">Try a sample</button>
+          <p class="err" id="err" hidden></p>
+        </div>
+      </div>
+      <div class="view" id="view" hidden>
+        <div class="tabs" role="tablist">
+          <button class="on" data-tab="3d">3D</button>
+          <button data-tab="2d">2D</button>
+        </div>
+        <div class="pane" id="pane3d"></div>
+        <div class="pane" id="pane2d" hidden></div>
+        <div class="hint">drag to rotate · scroll to zoom · right-drag to pan</div>
+      </div>
+    </section>
+
+    <aside class="panel" id="panel" hidden>
+      <div class="file"><span id="fname">file.svg</span><button class="ghost sm" id="reset">Replace</button></div>
+
+      <div class="field">
+        <div class="row"><label for="k">Max colors</label><output id="kout">4</output></div>
+        <input type="range" id="k" min="1" max="4" value="4">
+        <p class="note" id="knote"></p>
+      </div>
+
+      <div class="swatches" id="swatches"></div>
+
+      <div class="grid2">
+        <div class="field"><label for="w">Width (mm)</label><input type="number" id="w" value="100" min="1" step="1"></div>
+        <div class="field"><label for="h">Height (mm)</label><input type="number" id="h" value="2" min="0.1" step="0.2"></div>
+      </div>
+
+      <label class="check"><input type="checkbox" id="meta" checked><span>Embed filament assignments<small>For Orca / Bambu Studio. Turn off for plain 3MF.</small></span></label>
+
+      <div class="stats" id="stats"></div>
+      <button class="primary" id="dl">Download .3mf</button>
+    </aside>
+  </main>
+</body>
+</html>
